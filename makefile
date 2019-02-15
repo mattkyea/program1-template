@@ -1,11 +1,11 @@
 PROG1 = Star
 PROG2 = Planet
-PROG3 = lab3
+PROG3 = program1
 FLAGS = -Wall -Wextra -DDEBUG -g -std=c++14
 
-all: $(PROG3)
+all: program4
 
-$(PROG3): $(PROG1).o $(PROG2).o $(PROG3).o
+program4: $(PROG1).o $(PROG2).o $(PROG3).o
 	g++ $(FLAGS) $(PROG1).o $(PROG2).o $(PROG3).o -o $(PROG3)
 
 $(PROG1).o: $(PROG1).cpp
@@ -18,13 +18,13 @@ $(PROG3).o: $(PROG3).cpp
 	g++ $(FLAGS) -c $(PROG3).cpp -o $(PROG3).o
 
 run: all
-	./$(PROG3)
+	./program4
 
 clean: all
-	rm *.o $(PROG3)
+	rm *.o program4
 
 memcheck: all
-	valgrind ./$(PROG3)
+	valgrind ./program4
 
 commit: clean
 	git commit -a 
